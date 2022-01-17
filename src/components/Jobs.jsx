@@ -8,7 +8,7 @@ export const Jobs = () => {
     const dispatch = useDispatch();
     useEffect(() => {
          getDataJobs();
-    },[jobs])
+    },[])
 
      const getDataJobs = async() => {
         let res = await fetch(" http://localhost:3005/jobs");
@@ -16,6 +16,7 @@ export const Jobs = () => {
         dispatch(getJobs(data));
     }
 
+    console.log(jobs);
 
     return <p>{jobs.companyName}</p>
 }

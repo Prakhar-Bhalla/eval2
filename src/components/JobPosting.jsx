@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux";
-import { addJobs } from "../features/Jobs/actions";
+import { addJobs, getJobs } from "../features/Jobs/actions";
 
 export const JobPosting = () => {
     const[jobData, setJobData] = useState({companyName : "", jobTitle : "", salaryRange : "", jobDesc : "", location : "", jobType : ""});
@@ -25,6 +25,13 @@ export const JobPosting = () => {
 
         }
         dispatch(addJobs(jobData));
+        getDataJobs();
+    }
+
+    const getDataJobs = async() => {
+        let res = await fetch(" http://localhost:3005/jobs");
+        let data = await res.json();
+        dispatch(getJobs(data));
     }
 
 
