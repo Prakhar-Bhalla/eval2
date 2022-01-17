@@ -18,5 +18,7 @@ export const Jobs = () => {
 
     console.log(jobs);
 
-    return <p>{jobs.companyName}</p>
+    return jobs.map(e => {
+        return <p key={e.id}>{e.companyName}</p>
+    })
 }
