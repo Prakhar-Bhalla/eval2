@@ -1,23 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import { Navbar } from './components/Navbar';
+import { Route, Routes } from 'react-router-dom';
+import { HomePage } from './components/HomePage';
+import { ApplicantLogin } from './components/ApplicantLogin';
+import { EmployerLogin } from './components/EmployerLogin';
+import { JobPosting } from './components/JobPosting';
+import { Jobs } from './components/Jobs';
+import { PrivateRoute } from './components/PrivateRoute';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      <Routes>
+      <Route path="/" element={<HomePage/>}></Route>
+      <Route path="/applicantlogin" element={<ApplicantLogin/>}></Route>
+      <Route path="/employerlogin" element={<EmployerLogin/>}></Route>
+      <Route path="/jobposting" element={<PrivateRoute><JobPosting/></PrivateRoute>}></Route>
+      <Route path="/jobs" element={<PrivateRoute><Jobs/></PrivateRoute>}></Route>
+      </Routes>
     </div>
   );
 }
